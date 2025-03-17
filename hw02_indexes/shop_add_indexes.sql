@@ -8,16 +8,16 @@ CREATE TABLE ProductCategory (
 CREATE TABLE Producer (
     Id INT PRIMARY KEY,
     Name TEXT,
-	Email TEXT,
+    Email TEXT,
     Address TEXT,
     ContactNumber TEXT
 );
 
 -- поставщик продуктов(ID, название, контактные данные)
 CREATE TABLE Provider (
-	Id INT PRIMARY KEY,
+    Id INT PRIMARY KEY,
     Name TEXT,
-	Email TEXT,
+    Email TEXT,
     Address TEXT,
     ContactNumber TEXT
 );
@@ -31,18 +31,18 @@ CREATE TABLE Product (
     Id INT PRIMARY KEY,
     Name TEXT,
     Description TEXT,
-	Price INT,
-	CategoryID INT references ProductCategory(Id),
-	ProducerID INT references Producer(Id)
+    Price INT,
+    CategoryID INT references ProductCategory(Id),
+    ProducerID INT references Producer(Id)
 );
 
 -- связь поставщика продукта с продуктом многие-ко-многим, так как 
 -- один и тот же продукт может поставляться разными поставщиками и 
 -- соответсвенно разные поставщики могут поставлять один и тот же продукт
 CREATE TABLE ProviderToProduct (
-	ProductID INT references Product(Id),
+    ProductID INT references Product(Id),
     ProviderID INT references Provider(Id),
-	PRIMARY KEY(ProductID, ProviderID)
+    PRIMARY KEY(ProductID, ProviderID)
 );
 
 -- покупатель (ID, имя, контактные данные)
