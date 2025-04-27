@@ -20,9 +20,9 @@ VALUES
 INSERT INTO product (id, name, description, price, producerid)
 SELECT generate_series,
        substr(md5(random()::text), 1, 10) || substr(md5(random()::text), 1, 10) || substr(md5(random()::text), 1, 10),
- 	   substr(md5(random()::text), 1, 10),
+       substr(md5(random()::text), 1, 10),
        (random() * 70 + 10)::integer,
-	   NULL
+       NULL
 FROM generate_series(8, 1000000);
 
 ----------------------ПОЛНОТЕКСТОВЫЙ ПОИСК--------------------------------
